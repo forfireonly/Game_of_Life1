@@ -13,8 +13,7 @@ public class Universe {
     private long seed;
     private int generations;
 
-    public static int generation = 0;
-    public static int alive = 0;
+
 
 
     public void setSize(int size) {
@@ -59,152 +58,37 @@ public class Universe {
         }
     }
 
-    public String[][] createGenerations() throws InterruptedException {
-        String[][] universeOne = creatingUniverse();
-        String[][] universeTwo = new String[size][size];
-        int expendedSize = size + 2;
-        int neigborCounter;
-        //int alive;
-        String[][] expandedUniverse;
-        //int generation = 0;
-        if (generations == 0) {
-            displayGenerations(universeOne);
-            //return universeOne;
-        } else {
+    public String[][] endState(String[][] generation0) {
 
+        String[][] nextGeneration = generation0;
+        int counter = getGenerations();
+        if (generations > 0) {
 
-            while (generations > 0){
-                expandedUniverse = creatingExpandedUniverse(universeOne);
-                alive = 0;
-                //GameOfLife newView = new GameOfLife();
-                for (int i = 1; i < expendedSize - 1; i++) {
-                    for (int j = 1; j < expendedSize - 1; j++){
-                        neigborCounter = 0;
-
-                        if (expandedUniverse[i - 1][j].equals("O")) {
-                            neigborCounter++;
-                        }
-                        if (expandedUniverse[i][j - 1].equals("O")) {
-                            neigborCounter++;
-                        }
-                        if (expandedUniverse[i + 1][j].equals("O")) {
-                            neigborCounter++;
-                        }
-                        if (expandedUniverse[i][j + 1].equals("O")) {
-                            neigborCounter++;
-                        }
-
-                        if (expandedUniverse[i - 1][j - 1].equals("O")) {
-                            neigborCounter++;
-                        }
-
-                        if (expandedUniverse[i - 1][j + 1].equals("O")) {
-                            neigborCounter++;
-                        }
-
-                        if (expandedUniverse[i + 1][j - 1].equals("O")) {
-                            neigborCounter++;
-                        }
-
-                        if (expandedUniverse[i + 1][j + 1].equals("O")) {
-                            neigborCounter++;
-                        }
-
-                        if (expandedUniverse[i][j].equals("O")) {
-                            if (neigborCounter == 2 || neigborCounter == 3) {
-                                universeTwo[i - 1][j - 1] = "O";
-                                alive++;
-                            } else {
-                                universeTwo[i - 1][j - 1] = " ";
-                            }
-                        } else {
-                            if (neigborCounter == 3) {
-                                universeTwo[i - 1][j - 1] = "O";
-                                alive++;
-                            } else {
-                                universeTwo[i - 1][j - 1] = " ";
-                            }
-                        }
-
-                    }
-                }
-                generation++;
-                System.out.println("Generation #" + generation);
-                System.out.println("Alive: " + alive);
-                for (int i = 0; i < size; i++) {
-                    for (int j = 0; j < size; j++) {
-                        universeOne[i][j] = universeTwo[i][j];
-                    }
-                }
-                generations--;
-
-                displayGenerations(universeOne);
-
-                //GameOfLife newView = new GameOfLife();
-               // newView.visualize(universeOne, size);
-                //GameOfLife.initialize();
-                //newView.revalidate();
-                GameOfLife gameField = new GameOfLife();
-                JPanel universePanel = new JPanel();
-                universePanel.setLayout(new GridLayout(size, size, 0, 0));
-                //universePanel.setOpaque(true);
+            for (int i = 0; i < counter ; i++) {
+                //System.out.println(counter);
+                 String[][]nextGenerationIntermitant = GenerationAlgorithm.createGenerations(generation0);
+                 //System.out.println(Arrays.deepToString(nextGenerationIntermitant));
                 for (int x = 0; x < size; x++) {
                     for (int y = 0; y < size; y++) {
-
-                        JButton button = new JButton();
-                        button.setEnabled(false);
-                        button.setOpaque(true);
-                        if (universeOne[x][y].equals("O")) {
-                            button.setBackground(Color.BLACK);
-                        }
-                        universePanel.add(button);
+                        nextGeneration[x][y] = nextGenerationIntermitant[x][y];
                     }
                 }
-                gameField.add(universePanel);
-                gameField.setVisible(true);
 
-                TimeUnit.MILLISECONDS.sleep(3000);
-                clearScreen();
-                if (generation != generations) {
-                    gameField.dispose();
+
+                for (int x = 0; x < size; x++) {
+                    for (int y = 0; y < size; y++) {
+                        generation0[x][y] = nextGeneration[x][y];
+                    }
                 }
-
-            }
-
-
-        }
-
-        return universeOne;
-
-    }
-
-    public String[][] creatingExpandedUniverse(String[][] universeToExpend) {
-        int expendedSize = size + 2;
-        String[][] newExpandedUniverseArray = new String[expendedSize][expendedSize];
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                newExpandedUniverseArray[i + 1][j + 1] = universeToExpend[i][j];
             }
         }
-        for (int i = 0; i < size; i ++) {
-            newExpandedUniverseArray[0][i + 1] = universeToExpend[size-1][i];
-            newExpandedUniverseArray[expendedSize - 1][i + 1] = universeToExpend[0][i];
-            newExpandedUniverseArray[i + 1][0] = universeToExpend[i][size - 1];
-            newExpandedUniverseArray[i + 1][expendedSize - 1] = universeToExpend[i][0];
-
-        }
-        newExpandedUniverseArray[0][0] = universeToExpend[size - 1][size - 1];
-        newExpandedUniverseArray[0][expendedSize - 1] = universeToExpend[size - 1][0];
-        newExpandedUniverseArray[expendedSize - 1][0] = universeToExpend[0][size - 1];
-        newExpandedUniverseArray[expendedSize - 1][expendedSize - 1] = universeToExpend[0][0];
-
-        return newExpandedUniverseArray;
+        return nextGeneration;
     }
 
     public String[][] creatingUniverse() {
         String[][] newUniverseArray = new String[size][size];
         Random randomno = new Random();
-        //randomno.setSeed(seed);
+        randomno.setSeed(seed);
         boolean value;
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
@@ -236,8 +120,6 @@ public class Universe {
         return String.valueOf(matrixUniverse);
     }*/
 }
-
-
 
 
 

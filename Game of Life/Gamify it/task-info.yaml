@@ -610,62 +610,13 @@ files:
 
 
   learner_created: true
-- name: src/life/EmptyRectangle.java
+- name: src/life/GenerationAlgorithm.java
   visible: true
-  text: |-
-    package life;
-
-    import javax.swing.*;
-    import java.awt.*;
-
-    public class EmptyRectangle extends JPanel{
-
-        private int squareX = 0;
-        private int squareY = 0;
-        private int squareW = 20;
-        private int squareH = 20;
-
-        protected void paintComponent(Graphics g) {
-            super.paintComponent(g); // do your superclass's painting routine first, and then paint on top of it.
-            g.setColor(Color.BLACK);
-            g.drawRect(squareX,squareY,squareW,squareH);
-        }
-
-    }
-  learner_created: true
-- name: src/life/Rectangles.java
-  visible: true
-  text: |+
-    package life;
-
-    import java.awt.Color;
-    import java.awt.Graphics;
-    import java.awt.Graphics2D;
-
-    import javax.swing.JFrame;
-    import javax.swing.JPanel;
-
-    public class Rectangles extends JPanel {
-
-        public void paintComponent(Graphics g, int x, int y) {
-            super.paintComponent(g);
-            Graphics2D g2d = (Graphics2D) g;
-
-            g2d.setColor(new Color(212, 212, 212));
-            g2d.drawRect(10, 15, 90, 60);
-
-
-            g2d.setColor(new Color(31, 21, 1));
-            g2d.fillRect(250, 195, 90, 60);
-
-        }
-    }
-
   learner_created: true
 feedback_link: https://hyperskill.org/projects/54/stages/299/implement
 status: Solved
 feedback:
   message: Congratulations! Continue on <a href="https://hyperskill.org/projects/54/stages/299/implement">JetBrains
     Academy</a>
-  time: Sun, 09 Aug 2020 19:01:33 UTC
+  time: Sun, 16 Aug 2020 22:46:15 UTC
 record: -1
