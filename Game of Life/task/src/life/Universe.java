@@ -66,19 +66,13 @@ public class Universe {
 
             for (int i = 0; i < counter ; i++) {
                 //System.out.println(counter);
-                 String[][]nextGenerationIntermitant = GenerationAlgorithm.createGenerations(generation0);
+                 nextGeneration = GenerationAlgorithm.createGenerations(generation0);
                  //System.out.println(Arrays.deepToString(nextGenerationIntermitant));
-                for (int x = 0; x < size; x++) {
-                    for (int y = 0; y < size; y++) {
-                        nextGeneration[x][y] = nextGenerationIntermitant[x][y];
-                    }
-                }
+
 
 
                 for (int x = 0; x < size; x++) {
-                    for (int y = 0; y < size; y++) {
-                        generation0[x][y] = nextGeneration[x][y];
-                    }
+                    System.arraycopy(nextGeneration[x], 0, generation0[x], 0, size);
                 }
             }
         }
