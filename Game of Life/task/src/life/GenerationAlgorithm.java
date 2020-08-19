@@ -1,77 +1,76 @@
 package life;
 
-
 import java.util.Arrays;
 
 public class GenerationAlgorithm {
 
-     public static String[][] createGenerations (String [][] universeOne) {
+    public static String[][] createGenerations (String [][] universeOne) {
 
 
-         int size = universeOne.length;
-         String[][] universeTwo = new String[size][size];
-         int expendedSize = size + 2;
-         int neigborCounter;
+        int size = universeOne.length;
+        String[][] universeTwo = new String[size][size];
+        int expendedSize = size + 2;
+        int neigborCounter;
 
-         String[][] expandedUniverse = creatingExpandedUniverse(universeOne);
+        String[][] expandedUniverse = creatingExpandedUniverse(universeOne);
         // System.out.println(Arrays.deepToString(expandedUniverse));
 
-                 for (int i = 1; i < expendedSize - 1; i++) {
-                     for (int j = 1; j < expendedSize - 1; j++){
-                         neigborCounter = 0;
+        for (int i = 1; i < expendedSize - 1; i++) {
+            for (int j = 1; j < expendedSize - 1; j++){
+                neigborCounter = 0;
 
-                         if (expandedUniverse[i - 1][j].equals("O")) {
-                             neigborCounter++;
-                         }
-                         if (expandedUniverse[i][j - 1].equals("O")) {
-                             neigborCounter++;
-                         }
-                         if (expandedUniverse[i + 1][j].equals("O")) {
-                             neigborCounter++;
-                         }
-                         if (expandedUniverse[i][j + 1].equals("O")) {
-                             neigborCounter++;
-                         }
+                if (expandedUniverse[i - 1][j].equals("O")) {
+                    neigborCounter++;
+                }
+                if (expandedUniverse[i][j - 1].equals("O")) {
+                    neigborCounter++;
+                }
+                if (expandedUniverse[i + 1][j].equals("O")) {
+                    neigborCounter++;
+                }
+                if (expandedUniverse[i][j + 1].equals("O")) {
+                    neigborCounter++;
+                }
 
-                         if (expandedUniverse[i - 1][j - 1].equals("O")) {
-                             neigborCounter++;
-                         }
+                if (expandedUniverse[i - 1][j - 1].equals("O")) {
+                    neigborCounter++;
+                }
 
-                         if (expandedUniverse[i - 1][j + 1].equals("O")) {
-                             neigborCounter++;
-                         }
+                if (expandedUniverse[i - 1][j + 1].equals("O")) {
+                    neigborCounter++;
+                }
 
-                         if (expandedUniverse[i + 1][j - 1].equals("O")) {
-                             neigborCounter++;
-                         }
+                if (expandedUniverse[i + 1][j - 1].equals("O")) {
+                    neigborCounter++;
+                }
 
-                         if (expandedUniverse[i + 1][j + 1].equals("O")) {
-                             neigborCounter++;
-                         }
+                if (expandedUniverse[i + 1][j + 1].equals("O")) {
+                    neigborCounter++;
+                }
 
-                         if (expandedUniverse[i][j].equals("O")) {
-                             if (neigborCounter == 2 || neigborCounter == 3) {
-                                 universeTwo[i - 1][j - 1] = "O";
-                                // alive++;
+                if (expandedUniverse[i][j].equals("O")) {
+                    if (neigborCounter == 2 || neigborCounter == 3) {
+                        universeTwo[i - 1][j - 1] = "O";
+                        // alive++;
 
-                             } else {
-                                 universeTwo[i - 1][j - 1] = " ";
-                             }
-                         } else {
-                             if (neigborCounter == 3) {
-                                 universeTwo[i - 1][j - 1] = "O";
-                                // alive++;
-                             } else {
-                                 universeTwo[i - 1][j - 1] = " ";
-                             }
-                         }
-                     }
-                 }
+                    } else {
+                        universeTwo[i - 1][j - 1] = " ";
+                    }
+                } else {
+                    if (neigborCounter == 3) {
+                        universeTwo[i - 1][j - 1] = "O";
+                        // alive++;
+                    } else {
+                        universeTwo[i - 1][j - 1] = " ";
+                    }
+                }
+            }
+        }
 
 
-         //System.out.println(Arrays.deepToString(universeTwo));
-         return universeTwo;
-             }
+        //System.out.println(Arrays.deepToString(universeTwo));
+        return universeTwo;
+    }
 
     public static  String[][] creatingExpandedUniverse(String[][] universeToExpend) {
         int size = universeToExpend.length;

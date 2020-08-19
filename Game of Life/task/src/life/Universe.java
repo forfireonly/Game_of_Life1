@@ -49,7 +49,7 @@ public class Universe {
         System.out.print("\033[H\033[2J");
         System.out.flush();
     }
-    public void displayGenerations(String[][] universe) {
+    public void displayGeneration(String[][] universe) {
         for (int i = 0; i < size; i++) {
             for (int j = 0; j < size; j++) {
                 System.out.print(universe[i][j]);
@@ -66,8 +66,8 @@ public class Universe {
 
             for (int i = 0; i < counter ; i++) {
                 //System.out.println(counter);
-                 nextGeneration = GenerationAlgorithm.createGenerations(generation0);
-                 //System.out.println(Arrays.deepToString(nextGenerationIntermitant));
+                nextGeneration = GenerationAlgorithm.createGenerations(generation0);
+                //System.out.println(Arrays.deepToString(nextGenerationIntermitant));
 
 
 
@@ -99,6 +99,36 @@ public class Universe {
         return newUniverseArray;
     }
 
+    public int countAlive(String[][] someUniverse) {
+        int liveCount = 0;
+        for (int i = 0; i < size; i++) {
+            for (int j = 0; j < size; j++) {
+                if ("O".equals(someUniverse[i][j])) {
+                    liveCount++;
+                }
+            }
+        }
+        return liveCount;
+    }
+
+
+
+
+    public void displayAll (String[][] startingGeneration) {
+        String[][] currentGeneration = startingGeneration;
+        for (int i = 1; i <= generations; i++) {
+            System.out.println("Generation " + i);
+            System.out.println("Alive: " + countAlive(currentGeneration));
+            displayGeneration(currentGeneration);
+            for (int h = 0; h < size; h++){
+                for (int g = 0; g < size; g++) {
+                    currentGeneration = GenerationAlgorithm.createGenerations(currentGeneration);
+                }
+            }
+
+        }
+    }
+
     /*@Override
     public String toString() {
         String[][] universeToPrint = createGenerations();
@@ -114,6 +144,4 @@ public class Universe {
         return String.valueOf(matrixUniverse);
     }*/
 }
-
-
 

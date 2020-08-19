@@ -83,10 +83,11 @@ public class GameOfLife extends JFrame implements ActionListener{
         universe.setGenerations(generation);
 
         String[][] newUniverse = universe.creatingUniverse();
+        universe.displayAll(newUniverse);
         //universe.displayGenerations(newUniverse);
-        System.out.println();
-        String[][] resultingUniverse = universe.endState(newUniverse);
-        universe.displayGenerations(resultingUniverse);
+
+        //String[][] resultingUniverse = universe.endState(newUniverse);
+       // universe.displayGenerations(resultingUniverse);
 
 
 

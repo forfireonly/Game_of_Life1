@@ -224,10 +224,10 @@ files:
 - name: src/life/GameOfLife.java
   visible: true
   learner_created: true
-- name: src/life/Rectangles.java
+- name: src/life/GameField.java
   visible: true
   learner_created: true
-- name: src/life/EmptyRectangle.java
+- name: src/life/GenerationAlgorithm.java
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/projects/54/stages/298/implement
@@ -235,5 +235,5 @@ status: Solved
 feedback:
   message: Congratulations! Continue on <a href="https://hyperskill.org/projects/54/stages/298/implement">JetBrains
     Academy</a>
-  time: Sun, 09 Aug 2020 02:03:51 UTC
+  time: Mon, 17 Aug 2020 17:32:22 UTC
 record: 4
