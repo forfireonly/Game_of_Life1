@@ -20,3 +20,14 @@ Evolution is controlled by two rules:
 <img width="647" alt="Screen Shot 2020-08-16 at 1 22 53 PM" src="https://user-images.githubusercontent.com/29640816/90342224-aa7a9b00-dfc3-11ea-9ee8-32d21711b7cc.png">
 
 
+Need work on:
+
+- increasing/decreasing evolution speed (use buttons or JSlider)
+
+- color of cells (use JColorChooser or JComboBox)
+
+- setting size of the new field (use JTextField or JDialog)
+
+- save/load (use JFileChooser)
+
+- and so on.
