@@ -1,11 +1,8 @@
 package life;
 
-import java.util.Arrays;
-
 public class GenerationAlgorithm {
 
     public static String[][] createGenerations (String [][] universeOne) {
-
 
         int size = universeOne.length;
         String[][] universeTwo = new String[size][size];
@@ -51,15 +48,12 @@ public class GenerationAlgorithm {
                 if (expandedUniverse[i][j].equals("O")) {
                     if (neigborCounter == 2 || neigborCounter == 3) {
                         universeTwo[i - 1][j - 1] = "O";
-                        // alive++;
-
                     } else {
                         universeTwo[i - 1][j - 1] = " ";
                     }
                 } else {
                     if (neigborCounter == 3) {
                         universeTwo[i - 1][j - 1] = "O";
-                        // alive++;
                     } else {
                         universeTwo[i - 1][j - 1] = " ";
                     }
@@ -67,8 +61,6 @@ public class GenerationAlgorithm {
             }
         }
 
-
-        //System.out.println(Arrays.deepToString(universeTwo));
         return universeTwo;
     }
 

@@ -9,9 +9,9 @@ import java.util.concurrent.TimeUnit;
 
 public class Universe {
 
-    private int size;
-    private long seed;
-    private int generations;
+    private int size = 10;
+    private long seed = 10;
+    private int generations = 100;
 
 
 
@@ -67,9 +67,6 @@ public class Universe {
             for (int i = 0; i < counter ; i++) {
                 //System.out.println(counter);
                 nextGeneration = GenerationAlgorithm.createGenerations(generation0);
-                //System.out.println(Arrays.deepToString(nextGenerationIntermitant));
-
-
 
                 for (int x = 0; x < size; x++) {
                     System.arraycopy(nextGeneration[x], 0, generation0[x], 0, size);
@@ -114,12 +111,16 @@ public class Universe {
 
 
 
-    public void displayAll (String[][] startingGeneration) {
+    public String[][] displayAll (String[][] startingGeneration) {
         String[][] currentGeneration = startingGeneration;
+
+
         for (int i = 1; i <= generations; i++) {
             System.out.println("Generation " + i);
             System.out.println("Alive: " + countAlive(currentGeneration));
             displayGeneration(currentGeneration);
+
+
             for (int h = 0; h < size; h++){
                 for (int g = 0; g < size; g++) {
                     currentGeneration = GenerationAlgorithm.createGenerations(currentGeneration);
@@ -127,7 +128,17 @@ public class Universe {
             }
 
         }
+        return currentGeneration;
     }
+
+
+    public String[][] displayCurrent (String[][] startingGeneration) {
+        String[][] nextGeneration;
+        nextGeneration = GenerationAlgorithm.createGenerations(startingGeneration);
+        return nextGeneration;
+    }
+
+
 
     /*@Override
     public String toString() {

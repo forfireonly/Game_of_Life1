@@ -224,10 +224,10 @@ files:
 - name: src/life/GameOfLife.java
   visible: true
   learner_created: true
-- name: src/life/GameField.java
+- name: src/life/GenerationAlgorithm.java
   visible: true
   learner_created: true
-- name: src/life/GenerationAlgorithm.java
+- name: src/life/CellPanel.java
   visible: true
   learner_created: true
 feedback_link: https://hyperskill.org/projects/54/stages/298/implement
@@ -235,5 +235,5 @@ status: Solved
 feedback:
   message: Congratulations! Continue on <a href="https://hyperskill.org/projects/54/stages/298/implement">JetBrains
     Academy</a>
-  time: Mon, 17 Aug 2020 17:32:22 UTC
+  time: Sat, 22 Aug 2020 00:58:10 UTC
 record: 4
