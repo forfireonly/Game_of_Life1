@@ -31,3 +31,8 @@ Need work on:
 - save/load (use JFileChooser)
 
 - and so on.
+
+Current state of App:
+
+![GameOfLife](https://user-images.githubusercontent.com/29640816/90946425-e2317a80-e3e9-11ea-989a-ade05591c5fe.gif)
+
