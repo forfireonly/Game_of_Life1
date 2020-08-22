@@ -1,5 +1,4 @@
 package life;
-
 import javax.swing.*;
 import java.awt.*;
 import java.io.IOException;
@@ -155,4 +154,3 @@ public class Universe {
         return String.valueOf(matrixUniverse);
     }*/
 }
-

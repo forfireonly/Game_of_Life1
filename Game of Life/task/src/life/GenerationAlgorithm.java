@@ -1,5 +1,6 @@
 package life;
 
+
 public class GenerationAlgorithm {
 
     public static String[][] createGenerations (String [][] universeOne) {
